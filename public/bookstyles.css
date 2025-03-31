@@ -1,0 +1,284 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+header {
+    background-color: #003366;
+    color: white;
+    padding: 1.5em;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-around;
+    align-items: center; /* Align items vertically */
+}
+
+header h1 {
+    margin: 4;
+    padding: 20;
+    justify-content: space-around;
+    display: flex;
+    font-size: 2em;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+/* Logo Styling (Increased size) */
+header img {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 80px; /* Increased size */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+header img:hover {
+    transform: scale(1.1);
+}
+/* Search Train Form Section */
+section {
+    background-color: #ffffff;
+    margin: 30px auto;
+    padding: 30px;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #003366;
+}
+
+form input[type="text"], form input[type="date"], form select, form button {
+    padding: 12px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+form button {
+    background-color: #00509e;
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #003366;
+}
+
+/* Available Trains Table */
+#available-trains {
+    display: none;
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 1000px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#available-trains h2 {
+    text-align: center;
+    color: #003366;
+}
+
+#train-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#train-table th, #train-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+#train-table th {
+    background-color: #003366;
+    color: white;
+}
+
+#train-table td button {
+    padding: 8px 12px;
+    background-color: #00509e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#train-table td button:hover {
+    background-color: #003366;
+}
+
+/* Passenger Details Section */
+#passenger-details {
+    display: none;
+    margin: 50px auto;
+    padding: 30px;
+    max-width: 1000px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#passenger-details h2 {
+    text-align: center;
+    color: #003366;
+}
+
+#passenger-info .passenger {
+    margin-bottom: 30px;
+}
+
+#passenger-info label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #003366;
+}
+
+#passenger-info input, #passenger-info select {
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+}
+
+#class-type {
+    padding: 12px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+#booking-form button {
+    background-color: #00509e;
+    color: white;
+    padding: 12px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+#booking-form button:hover {
+    background-color: #003366;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    section {
+        padding: 20px;
+    }
+
+    #available-trains, #passenger-details {
+        padding: 20px;
+    }
+
+    #train-table th, #train-table td {
+        padding: 10px;
+    }
+}
+
+* CSS for the payment popup */
+#payment-popup {
+    display: none; /* Initially hidden */
+    position: fixed; /* Stays fixed on the screen */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 1000; /* Ensure it's on top of other content */
+}
+
+#payment-popup h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #4CAF50; /* Success color */
+}
+
+#payment-popup p {
+    font-size: 18px;
+    margin: 15px 0;
+    color: #333;
+}
+
+#payment-popup button {
+    background-color: #4CAF50; /* Green success button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#payment-popup button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+}
+
+/* Optional: Add a slight background overlay for better focus */
+body::before {
+    content: '';
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+    z-index: 999; /* Ensure it appears behind the popup */
+}
+
+#payment-popup.show ~ body::before {
+    display: block; /* Show the overlay when popup is active */
+}

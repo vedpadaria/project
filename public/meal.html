@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Ordering Page</title>
+    <link rel="stylesheet" href="mealstyles.css">
+</head>
+<script src="Meal.js"></script>
+<body>
+
+<!-- Search Bar -->
+<header>
+    <a href="Home.html">
+        <img src="RailwayLogo.jpeg" alt="Logo" class="logo">
+    </a>
+    <h1>Meal Ordering </h1>
+    <input type="text" id="search-bar" placeholder="Search for meals..." oninput="searchMeals()">
+        <nav>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="station.html">Stations</a></li>
+                <li><a href="meal.html">Meal</a></li>
+                <li><a href="about">About Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="Dashboard.html">Dashboard</a></li>
+            </ul>
+        </nav>
+</header>
+
+<!-- Filter and Meal Cards -->
+<div class="meal-page-container">
+    <!-- Filter Section (Radio Buttons in One Line) -->
+    <div class="filter-section">
+        <h3>Filter by Meal Type:</h3>
+        <form id="meal-filter">
+            <label><input type="radio" name="mealType" value="veg" id="veg" onclick="filterMeals()"> Vegetarian</label>
+            <label><input type="radio" name="mealType" value="non-veg" id="non-veg" onclick="filterMeals()"> Non-Vegetarian</label>
+            <label><input type="radio" name="mealType" value="vegan" id="vegan" onclick="filterMeals()"> Vegan</label>
+            <label><input type="radio" name="mealType" value="gluten-free" id="gluten-free" onclick="filterMeals()"> Gluten-Free</label>
+        </form>
+    </div>
+
+    <!-- Meal Cards Section -->
+    <section class="meal-cards" id="meal-cards">
+        <!-- Vegetarian Meals -->
+        <div class="meal-card" data-meal-type="veg" id="meal-001">
+            <img src="../public/mealimages/Pavbhaji.jpeg" alt="Pav Bhaji">
+            <h2>Pav Bhaji</h2>
+            <p>Price: ₹120</p>
+            <label for="quantity-001">Quantity:</label>
+            <input type="number" id="quantity-001" name="quantity" min="1" value="1">
+            <button class="buy-now" data-pnr="123456">Buy Now</button>
+        </div>
+
+        <div class="meal-card" data-meal-type="veg" id="meal-002">
+            <img src="../public//mealimages/Vada pav.jpeg" alt="Vada Pav">
+            <h2>Vada Pav</h2>
+            <p>Price: ₹40</p>
+            <label for="quantity-002">Quantity:</label>
+            <input type="number" id="quantity-002" name="quantity" min="1" value="1">
+            <button class="buy-now" data-pnr="123456">Buy Now</button>
+        </div>
+
+        <div class="meal-card" data-meal-type="veg" id="meal-003">
+            <img src="../public/mealimages/samosa.jpeg" alt="Samosa">
+            <h2>Samosa</h2>
+            <p>Price: ₹30</p>
+            <label for="quantity-003">Quantity:</label>
+            <input type="number" id="quantity-003" name="quantity" min="1" value="1">
+            <button class="buy-now" data-pnr="123456">Buy Now</button>
+        </div>
+
+        <div class="meal-card" data-meal-type="veg" id="meal-004">
+            <img src="../public/mealimages/PaneerButterMasala.jpeg" alt="Paneer Butter Masala">
+            <h2>Paneer Butter Masala</h2>
+            <p>Price: ₹220</p>
+            <label for="quantity-004">Quantity:</label>
+            <input type="number" id="quantity-004" name="quantity" min="1" value="1">
+            <button class="buy-now" data-pnr="123456">Buy Now</button>
+        </div>
+
+        <div class="meal-card" data-meal-type="veg" id="meal-005">
+            <img src="../public/mealimages/chapati.jpeg" alt="Chapati">
+            <h2>Chapati</h2>
+            <p>Price: ₹20</p>
+            <label for="quantity-005">Quantity:</label>
+            <input type="number" id="quantity-005" name="quantity" min="1" value="1">
+            <button class="buy-now" data-pnr="123456">Buy Now</button>
+        </div>
+
+        <div class="meal-card" data-meal-type="veg" id="meal-006">
+            <img src="../public/mealimages/Garlicnaan.jpeg" alt="Garlic Naan">
+            <h2>Garlic Naan</h2>
+            <p>Price: ₹30</p>
+            <label for="quantity-006">Quantity:</label>
+            <input type="number" id="quantity-006" name="quantity" min="1" value="1">
+            <button class="buy-now" data-pnr="123456">Buy Now</button>
+        </div>
+
+        <!-- Non-Vegetarian Meals -->
+        <div class="meal-card" data-meal-type="non-veg" id="meal-007">
+            <img src="../public/mealimages/chicken-butter-masala.jpeg" alt="Chicken Butter Masala">
+            <h2>Chicken Butter Masala</h2>
+            <p>Price: ₹250</p>
+            <label for="quantity-007">Quantity:</label>
+            <input type="number" id="quantity-007" name="quantity" min="1" value="1">
+            <button class="buy-now" data-pnr="123456">Buy Now</button>
+        </div>
+
+        <div class="meal-card" data-meal-type="non-veg" id="meal-008">
+            <img src="../public/mealimages/chicken-biryani.jpeg" alt="Chicken Biryani">
+            <h2>Chicken Biryani</h2>
+            <p>Price: ₹180</p>
+            <label for="quantity-008">Quantity:</label>
+            <input type="number" id="quantity-008" name="quantity" min="1" value="1">
+            <button class="buy-now" data-pnr="123456">Buy Now</button>
+        </div>
+
+        <!-- Vegan Meals -->
+        <div class="meal-card" data-meal-type="vegan" id="meal-009">
+            <img src="../public/mealimages/quinoa salad.jpeg" alt="Quinoa Salad">
+            <h2>Quinoa Salad</h2>
+            <p>Price: ₹120</p>
+            <label for="quantity-009">Quantity:</label>
+            <input type="number" id="quantity-009" name="quantity" min="1" value="1">
+            <button class="buy-now" data-pnr="123456">Buy Now</button>
+        </div>
+
+        <div class="meal-card" data-meal-type="vegan" id="meal-010">
+            <img src="../public/mealimages/utapam.jpeg" alt="Uttapam">
+            <h2>Uttapam</h2>
+            <p>Price: ₹100</p>
+            <label for="quantity-010">Quantity:</label>
+            <input type="number" id="quantity-010" name="quantity" min="1" value="1">
+            <button class="buy-now" data-pnr="123456">Buy Now</button>
+        </div>
+
+        <!-- Gluten-Free Meals -->
+        <div class="meal-card" data-meal-type="gluten-free" id="meal-011">
+            <img src="../public/mealimages/dosa.jpeg" alt="Dosa">
+            <h2>Dosa</h2>
+            <p>Price: ₹90</p>
+            <label for="quantity-011">Quantity:</label>
+            <input type="number" id="quantity-011" name="quantity" min="1" value="1">
+            <button class="buy-now" data-pnr="123456">Buy Now</button>
+        </div>
+
+        <div class="meal-card" data-meal-type="gluten-free" id="meal-012">
+            <img src="./mealimages/pani-puri.jpeg" alt="Pani Puri">
+            <h2>Pani Puri</h2>
+            <p>Price: ₹50</p>
+            <label for="quantity-012">Quantity:</label>
+            <input type="number" id="quantity-012" name="quantity" min="1" value="1">
+            <button class="buy-now" data-pnr="123456">Buy Now</button>
+        </div>
+
+        <!-- Beverages -->
+        <div class="meal-card" data-meal-type="veg" id="meal-013">
+            <img src="../public/mealimages/milkshake.jpeg" alt="Milkshake">
+            <h2>Milkshake</h2>
+            <p>Price: ₹60</p>
+            <label for="quantity-013">Quantity:</label>
+            <input type="number" id="quantity-013" name="quantity" min="1" value="1">
+            <button class="buy-now" data-pnr="123456">Buy Now</button>
+        </div>
+
+        <div class="meal-card" data-meal-type="veg" id="meal-014">
+            <img src="../public/mealimages/coffee.jpeg" alt="Coffee">
+            <h2>Coffee</h2>
+            <p>Price: ₹40</p>
+            <label for="quantity-014">Quantity:</label>
+            <input type="number" id="quantity-014" name="quantity" min="1" value="1">
+            <button class="buy-now" data-pnr="123456">Buy Now</button>
+        </div>
+
+        <div class="meal-card" data-meal-type="veg" id="meal-015">
+            <img src="../public/mealimages/tea.jpeg" alt="Tea">
+            <h2>Tea</h2>
+            <p>Price: ₹20</p>
+            <label for="quantity-015">Quantity:</label>
+            <input type="number" id="quantity-015" name="quantity" min="1" value="1">
+            <button class="buy-now" data-pnr="123456">Buy Now</button>
+        </div>
+        
+    </section>
+</div>
+<script>
+    function filterMeals() {
+        const selectedMealType = document.querySelector('input[name="mealType"]:checked').value;
+        const mealCards = document.querySelectorAll('.meal-card');
+    
+        mealCards.forEach(card => {
+            if (card.dataset.mealType === selectedMealType || selectedMealType === "all") {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    }
+    
+    function searchMeals() {
+        const searchTerm = document.getElementById('search-bar').value.toLowerCase();
+        const mealCards = document.querySelectorAll('.meal-card');
+    
+        mealCards.forEach(card => {
+            const mealName = card.querySelector('h2').textContent.toLowerCase();
+            if (mealName.includes(searchTerm)) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    }
+    
+</script>
+
+<script >
+    // This function will handle the Buy Now button click
+function handleBuyNow(event) {
+    try {
+        const button = event.target;
+        const mealCard = button.closest('.meal-card'); // Get the meal card element
+        
+        // Extract the meal details
+        const mealName = mealCard.querySelector('h2').innerText; // Get the meal name
+        const priceText = mealCard.querySelector('p').innerText; // Get the price text
+        const price = parseFloat(priceText.replace(/[^\d.]/g, '')); // Extract numeric price
+        
+        const quantityInput = mealCard.querySelector('input[name="quantity"]');
+        const quantity = parseInt(quantityInput.value, 10) || 1; // Ensure quantity is a valid integer
+
+        // Calculate total price
+        const totalPrice = price * quantity;
+
+        // Prepare the order details object
+        const orderDetails = {
+            mealName: mealName.trim(),
+            price: price.toFixed(2),
+            quantity: quantity,
+            totalPrice: totalPrice.toFixed(2)
+        };
+
+        // Store the order details in sessionStorage
+        sessionStorage.setItem('orderDetails', JSON.stringify(orderDetails));
+
+        // Redirect to the payment page
+        window.location.href = '../routes/payment/payment.html'; // Replace 'payment.html' with the correct path to your payment page
+    } catch (error) {
+        console.error('Error handling Buy Now click:', error);
+        alert('Something went wrong while processing your order. Please try again.');
+    }
+}
+
+// Attach event listeners to the Buy Now buttons after the DOM is loaded
+document.addEventListener('DOMContentLoaded', function () {
+    const buyNowButtons = document.querySelectorAll('.buy-now');
+    if (buyNowButtons.length > 0) {
+        buyNowButtons.forEach(button => {
+            button.addEventListener('click', handleBuyNow);
+        });
+    } else {
+        console.warn('No Buy Now buttons found on the page.');
+    }
+});
+</script>
+
+</body>
+</html>

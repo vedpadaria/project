@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Railway Reservation System - Home</title>
+    <link rel="stylesheet" href="homestyles.css">
+</head>
+
+<body>
+    <header>
+        <a href="Home.html">
+            <img src="RailwayLogo.jpeg" alt="Logo" class="logo">
+        </a>
+        <h2>Welcome to the Railway Reservation System</h2>
+        <nav>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="booking.html">booking</a></li>
+                <li><a href="station.html">Stations</a></li>
+                <li><a href="meal.html">Meal</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="Dashboard.html">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <form id="search-train-form">
+            <label for="source">Source Station:</label>
+            <input type="text" id="source" name="source" required placeholder="Enter source station">
+
+            <label for="destination">Destination Station:</label>
+            <input type="text" id="destination" name="destination" required placeholder="Enter destination station">
+
+            <label for="travel-date">Travel Date:</label>
+            <input type="date" id="travel-date" name="travelDate" required>
+
+            <button type="submit">Search Trains</button>
+        </form>
+    </section>
+
+    <!-- Display available trains -->
+    <section id="available-trains" style="display:none;">
+        <h2>Available Trains</h2>
+        <table id="train-table">
+            <thead>
+                <tr>
+                    <th>Train ID</th>
+                    <th>Train Name</th>
+                    <th>Departure</th>
+                    <th>Arrival</th>
+                    <th>Class</th>
+                    <th>Price</th>
+                    <th>Select</th>
+                </tr>
+            </thead>
+            <tbody id="train-list">
+                <!-- Trains will be populated here dynamically -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Passenger Details Section -->
+    <section id="passenger-details" style="display:none;">
+        <h2>Enter Passenger Details</h2>
+        <form id="booking-form">
+            <div id="passenger-info"></div>
+
+            <label for="class-type">Class Type:</label>
+            <select id="class-type" name="classType" required>
+                <option value="sleeper">Sleeper</option>
+                <option value="thirdAC">3rd AC</option>
+                <option value="secondAC">2nd AC</option>
+                <option value="firstAC">1st AC</option>
+            </select>
+
+            <button type="submit">Confirm and Proceed to Payment</button>
+        </form>
+    </section>
+
+    <section id="image-slider">
+        <div class="image-container">
+            <img src="banner_1.jpg" alt="Image 1">
+            <img src="banner_2.jpg" alt="Image 2">
+            <img src="banner_3.jpg" alt="Image 3">
+            <img src="banner_4.jpg" alt="Image 4">
+            <img src="banner_5.jpg" alt="Image 5">
+            <img src="image6.jpeg" alt="Image 6">
+            <img src="image7.jpeg" alt="Image 7">
+            <img src="image8.jpeg" alt="Image 8">
+            <img src="image9.jpeg" alt="Image 9">
+            <img src="image10.jpg" alt="Image 10">
+        </div>
+    </section>
+   
+
+    <section class="feedback-container">
+        <div class="feedback">
+            <h2>Feedback</h2>
+        </div>
+    
+        <form id="inquiry-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+    
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+    
+            <button type="submit">Submit Inquiry</button>
+        </form>
+    </section>
+    
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>We provide the best train ticket booking system with ease of access and convenience.</p>
+    </section>
+
+    <section id="contact">
+        <!-- Contact Us Section -->
+<div id="contact">
+    <h2>Contact Us</h2>
+    <ul>
+        <li>
+            <a href="https://facebook.com" target="_blank">
+                <img src="facebook.jpeg" alt="Facebook" width="20" height="20"> Facebook
+            </a>
+        </li>
+        <li>
+            <a href="https://twitter.com" target="_blank">
+                <img src="x.jpeg" alt="Twitter" width="20" height="20"> Twitter
+            </a>
+        </li>
+        <li>
+            <a href="https://instagram.com" target="_blank">
+                <img src="insta.jpeg" alt="instagram" width="20" height="20"> LinkedIn
+            </a>
+        </li>
+        <li>
+            <a href="mailto:info@domain.com">
+                <img src="mail.jpeg" alt="Email" width="20" height="20"> Email Us
+            </a>
+        </li>
+    </ul>
+</div>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Railway Reservation System. All rights reserved.</p>
+    </footer>
+
+    <!-- Script to handle form submission and display trains from the database -->
+    <script>
+        document.getElementById('search-train-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const source = document.getElementById('source').value;
+            const destination = document.getElementById('destination').value;
+            const travelDate = document.getElementById('travel-date').value;
+
+            const response = await fetch('http://localhost:3000/search-trains', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ source, destination, travelDate }),
+            });
+
+            if (response.ok) {
+                const trains = await response.json();
+                displayAvailableTrains(trains);
+            } else {
+                alert('No trains available or error fetching trains.');
+            }
+        });
+
+        function displayAvailableTrains(trains) {
+            const trainList = document.getElementById('train-list');
+            trainList.innerHTML = ''; // Clear previous results
+
+            trains.forEach(train => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${train.trainId}</td>
+                    <td>${train.trainName}</td>
+                    <td>${train.source}</td>
+                    <td>${train.destination}</td>
+                    <td>${train.classType.join(", ")}</td>
+                    <td>${train.fare}</td>
+                    <td><button class="select-train" data-train-id="${train.trainId}">Select</button></td>
+                `;
+                trainList.appendChild(row);
+            });
+
+            document.getElementById('available-trains').style.display = 'block';
+
+            document.querySelectorAll('.select-train').forEach(button => {
+                button.addEventListener('click', function () {
+                    const trainID = this.getAttribute('data-train-id');
+                    document.getElementById('passenger-details').style.display = 'block';
+                    handlePassengerDetails(trainID);
+                });
+            });
+        }
+
+        function handlePassengerDetails(trainID) {
+            const passengerInfoDiv = document.getElementById('passenger-info');
+            passengerInfoDiv.innerHTML = ''; // Clear previous fields
+
+            for (let i = 0; i < 6; i++) {
+                const passengerDiv = document.createElement('div');
+                passengerDiv.innerHTML = `
+                    <label for="passenger-name-${i}">Passenger Name ${i + 1}:</label>
+                    <input type="text" id="passenger-name-${i}" name="passenger-name-${i}" required>
+
+                    <label for="passenger-age-${i}">Age:</label>
+                    <input type="number" id="passenger-age-${i}" name="passenger-age-${i}" required>
+
+                    <label for="passenger-gender-${i}">Gender:</label>
+                    <select id="passenger-gender-${i}" name="passenger-gender-${i}" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                `;
+                passengerInfoDiv.appendChild(passengerDiv);
+            }
+
+            document.getElementById('booking-form').addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const passengerDetails = [];
+                for (let i = 0; i < 6; i++) {
+                    const name = document.getElementById(`passenger-name-${i}`).value;
+                    const age = document.getElementById(`passenger-age-${i}`).value;
+                    const gender = document.getElementById(`passenger-gender-${i}`).value;
+
+                    if (name && age && gender) {
+                        passengerDetails.push({ name, age, gender });
+                    }
+                }
+
+                const classType = document.getElementById('class-type').value;
+
+                const bookingData = {
+                    trainID,
+                    classType,
+                    passengers: passengerDetails,
+                };
+
+                const response = await fetch('http://localhost:3000/bookTicket', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(bookingData),
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    alert('Ticket booked successfully! Redirecting to payment...');
+                    window.location.href = '/payment.html';
+                } else {
+                    alert('Booking failed. Please try again.');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

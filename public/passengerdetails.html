@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passenger Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Enter Passenger Details</h1>
+        <nav>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <form id="passenger-form">
+        <div id="passenger-details"></div>
+        <button type="submit">Confirm Booking</button>
+    </form>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const trainId = urlParams.get('trainId');
+
+        // Generate input fields for up to 6 passengers
+        const passengerDetailsDiv = document.getElementById('passenger-details');
+        for (let i = 1; i <= 6; i++) {
+            passengerDetailsDiv.innerHTML += `
+                <h3>Passenger ${i}</h3>
+                <input type="text" name="name${i}" placeholder="Name" required>
+                <input type="number" name="age${i}" placeholder="Age" required>
+                <select name="gender${i}" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            `;
+        }
+
+        document.getElementById('passenger-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const passengers = [];
+
+            for (let i = 1; i <= 6; i++) {
+                if (formData.get(`name${i}`)) {
+                    passengers.push({
+                        name: formData.get(`name${i}`),
+                        age: formData.get(`age${i}`),
+                        gender: formData.get(`gender${i}`)
+                    });
+                }
+            }
+
+            try {
+                const response = await fetch('/confirm-booking', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ trainId, passengers })
+                });
+                const result = await response.json();
+                window.location.href = `/payment.html?bookingId=${result.bookingId}`;
+            } catch (error) {
+                console.error('Error confirming booking:', error);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Payment</h1>
+        <nav>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="payment-info"></div>
+    <button id="pay-now">Pay Now</button>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const bookingId = urlParams.get('bookingId');
+
+        // Fetch booking details to display payment info
+        fetch(`/get-booking-details?bookingId=${bookingId}`)
+            .then(response => response.json())
+            .then(data => {
+                const paymentInfoDiv = document.getElementById('payment-info');
+                paymentInfoDiv.innerHTML = `
+                    <h2>Booking Summary</h2>
+                    <p>PNR: ${data.pnrNumber}</p>
+                    <p>Total Fare: ₹${data.totalFare}</p>
+                `;
+            });
+
+        document.getElementById('pay-now').addEventListener('click', async () => {
+            const response = await fetch('/create-order', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ totalFare: 1000 }) // Use actual fare
+            });
+            
+            const data = await response.json();
+            
+            var options = {
+                "key": "YOUR_RAZORPAY_KEY", // Enter your Razorpay Key
+                "amount": data.amount,
+                "currency": "INR",
+                "name": "Railway Reservation",
+                "description": "Ticket Payment",
+                "order_id": data.orderId,
+                "handler": async function (response) {
+                    const paymentSuccessResponse = await fetch('/payment-success', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            paymentId: response.razorpay_payment_id,
+                            orderId: response.razorpay_order_id,
+                            bookingId
+                        })
+                    });
+        
+                    const result = await paymentSuccessResponse.json();
+                    if (result.success) {
+                        alert('Payment and booking saved successfully!');
+                        window.location.href = '/ticket.html?bookingId=' + bookingId; // Redirect to the ticket page
+                    } else {
+                        alert('Error saving booking details!');
+                    }
+                },
+                "prefill": {
+                    "name": "John Doe",
+                    "email": "john.doe@example.com",
+                    "contact": "9999999999"
+                }
+            };
+            const rzp = new Razorpay(options);
+            rzp.open();
+        });
+    </script>
+</body>
+</html>

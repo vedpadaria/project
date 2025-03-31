@@ -1,0 +1,116 @@
+/* Additional Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e8f1f9; /* Same as booking page background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container for login */
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 900px; /* Maximum width of container */
+    height: 600px; /* Adjust height */
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Left Side (Full Height Image & Blue Background) */
+.left-side {
+    background-color: #2575fc; /* Blue Background */
+    width: 50%; /* Takes half of the container */
+    display: flex;
+    justify-content: center; /* Center image */
+    align-items: center; /* Center image */
+    overflow: hidden; /* Prevent overflow */
+}
+
+.left-side img {
+    width: 100%; /* Full width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Maintain aspect ratio */
+    min-height: 100%; /* Ensure the image covers the area */
+}
+
+/* Right Side (Form and Header) */
+.right-side {
+    width: 40%;
+    padding: 20px; /* Adjusted padding for compactness */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Header with Logo */
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header img {
+    width: 150px; /* Adjust logo size */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto; /* Center the logo */
+    display: block; /* Center alignment */
+}
+
+/* Form Styling */
+form h2 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #003366; /* Main color from booking page */
+}
+
+/* Input Styling */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1.1em;
+    background-color: #f4f9fc; /* Light input background for consistency */
+}
+
+/* Button Styles */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #00509e; /* Button color from booking page */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+/* Button Hover Effect */
+button:hover {
+    background-color: #003366; /* Hover effect color */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1080px) {
+    .container {
+        flex-direction: column;
+        height: auto; /* Adjust height on small screens */
+    }
+
+    .left-side,
+    .right-side {
+        width: 100%;
+    }
+
+    .left-side img {
+        width: 100%; /* Adjust for smaller screens */
+        height: auto; /* Maintain aspect ratio */
+    }
+}
