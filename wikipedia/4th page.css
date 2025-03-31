@@ -1,0 +1,378 @@
+/* General Styles */
+  body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+    border-bottom: 2px solid #c4c4c4;
+  }
+  
+  .header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4d4d4d;
+  }
+  
+  .header .logo span {
+    font-size: 0.8rem;
+    color: #7d7d7d;
+  }
+  
+  .breadcrumb a {
+    color: #4d4d4d;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  
+  .breadcrumb a.active {
+    font-weight: bold;
+  }
+  
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+  
+  .icon {
+    font-size: 1.5rem;
+  }
+/* Hero Section */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(90deg, #e6f3f6, #d4e6d7);
+    padding: 50px;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hero-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .hero-content h2 {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 20px;
+    font-weight: normal;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #555;
+  }
+  
+  .btn-secondary {
+    background-color: #dce3f5;
+    color: #333;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #c6d2ef;
+  }
+  
+  .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero-image img {
+    width: 300px;
+    height: 300px;
+    animation: spin 10s linear infinite;
+  }
+  
+  /* Spinning Animation */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .logo-container img {
+    margin-top: 20px;
+    width: 80px;
+    height: auto;
+  }
+  
+  .buttons {
+    margin-top: 30px;
+  }
+  
+  .buttons .btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    color: white;
+    background-color: #243748;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .buttons .btn:hover {
+    background-color: #1d2c3a;
+  }
+  /* Container */
+  .container {
+    display: flex;
+  }
+  
+  /* Container Layout */
+  .container {
+    display: flex;
+  }
+  
+  /* Sidebar Styles */
+  .sidebar {
+    width: 250px;
+    background-color: #e6eaf6;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+  
+  .sidebar h2 {
+    font-size: 1.8rem;
+    color: #000;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+  
+  .sidebar ul li {
+    margin: 15px 0;
+  }
+  
+  .sidebar ul li a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000;
+    text-decoration: underline;
+  }
+  
+  .sidebar ul li a:hover {
+    color: #0073e6;
+  }
+  
+  /* Main Content */
+  .content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .content h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }  
+  
+  /* Code Blocks */
+  pre {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 10px;
+    overflow-x: auto;
+    border-radius: 5px;
+  }
+  
+  code {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1rem;
+  }
+
+  /* Add below your existing CSS */
+
+/* Comparison Table */
+#comparison-table {
+    margin: 40px 0;
+  }
+  
+  #comparison-table h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1rem;
+    text-align: left;
+  }
+  
+  thead tr {
+    background-color: #e6eaf6;
+  }
+  
+  th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Developer Information Section */
+  #developer-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e6eaf6;
+    padding: 30px;
+    margin: 40px 0;
+    border-radius: 8px;
+  }
+  
+  .info-box {
+    text-align: center;
+    background: #dce3f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin: 0 10px;
+  }
+  
+  .info-box p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  
+  .info-box button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .info-box button:hover {
+    background-color: #444;
+  }
+  
+  /* Resources Section */
+  #resources h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  #resources ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #resources ul li {
+    margin: 10px 0;
+  }
+  
+  #resources ul li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  #resources ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Footer Section */
+  footer {
+    background-color: #e6eaf6;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+  }
+  
+  footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  footer ul li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  footer ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  footer p {
+    margin: 10px 0;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
